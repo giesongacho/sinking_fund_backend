@@ -25,15 +25,15 @@ module.exports = {
       },
       head_count: {
         type: Sequelize.INTEGER,
-        allowNull:FALSE
+        allowNull:false
       },
       head_amount: {
         type: Sequelize.INTEGER,
-        allowNull:FALSE
+        allowNull:false
       },
       head_status: {
         type: Sequelize.INTEGER,
-        allowNull:FALSE,
+        allowNull:false,
         defaultValue:0
       },
       createdAt: {

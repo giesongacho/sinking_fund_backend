@@ -14,8 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Credit_Balance.init({
-    balance: DataTypes.INTEGER,
-    due_date: DataTypes.DATE
+    balance: {
+      DataTypes:DataTypes.INTEGER,
+      allowNull:false
+    },
+    due_date: {
+      DataTypes:DataTypes.DATE,
+      allowNull:false
+    }
   }, {
     sequelize,
     modelName: 'Credit_Balance',

@@ -14,9 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   UserFund.init({
-    user_contributed: DataTypes.INTEGER,
-    date_contribute: DataTypes.DATE,
-    status: DataTypes.INTEGER
+    fund_id: {
+      DataTypes:DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4
+    },
+    user_contributed: {
+      DataTypes:DataTypes.INTEGER,
+      allowNull:false
+    },
+    date_contribute: {
+      DataTypes:DataTypes.DATE,
+      allowNull:false
+    },
+    status: {
+      DataTypes:DataTypes.INTEGER,
+      allowNull:false
+    }
   }, {
     sequelize,
     modelName: 'UserFund',

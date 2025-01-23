@@ -6,17 +6,34 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      fund: {
+        type:Sequelize.UUID,
+        defaultValue:Sequelize.UUIDV4,
+        primaryKey: true,
+        allowNull:false
+      },
+      user_id: {
+        type:Sequelize.UUID,
+        allowNull:false,
+        references: {
+          model:'User',
+          key:'uuid'
+        },
+        onDelete: 'CASCADE'
       },
       user_contributed: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull:false
       },
       date_contribute: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull:false
       },
       status: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,

@@ -14,10 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Credit_Request.init({
-    request_amount: DataTypes.INTEGER,
-    payment_terms: DataTypes.INTEGER,
-    request_date: DataTypes.DATE,
-    status: DataTypes.INTEGER
+    request_amount: {
+      DataTypes:DataTypes.INTEGER,
+      allowNull:false
+    },
+    payment_terms: {
+      DataTypes:DataTypes.INTEGER,
+      allowNull:false
+    },
+    request_date: {
+      DataTypes:DataTypes.DATE,
+      allowNull:false
+    },
+    status: {
+      DataTypes:DataTypes.INTEGER,
+      allowNull:false
+    }
   }, {
     sequelize,
     modelName: 'Credit_Request',

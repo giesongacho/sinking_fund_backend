@@ -16,15 +16,15 @@ module.exports = {
       },
       firstName: {
         type: Sequelize.STRING,
-        allowNull:FALSE
+        allowNull:false
       },
       lastName: {
         type: Sequelize.STRING,
-        allowNull:FALSE
+        allowNull:false
       },
       status: {
         type: Sequelize.INTEGER,
-        allowNull:FALSE,
+        allowNull:false,
         defaultValue:0
       },
       createdAt: {

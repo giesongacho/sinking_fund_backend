@@ -9,11 +9,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      fund_id: {
+        type:Sequelize.UUID,
+        allowNull:false,
+        references: {
+          model:'UserFund',
+          key:'fund_id'
+        },
+        onDelete: 'CASCADE'
+      },
       balance: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull:false
       },
       due_date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,
