@@ -19,7 +19,7 @@ module.exports = {
         allowNull:false,
         references: {
           model:'User',
-          key:'uuid'
+          key:'user_id'
         },
         onDelete: 'CASCADE'
       },
@@ -28,7 +28,7 @@ module.exports = {
         allowNull:false
       },
       date_contribute: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull:false
       },
       status: {

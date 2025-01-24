@@ -27,7 +27,7 @@ module.exports = {
         allowNull:false
       },
       request_date: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull:false
       },
       status: {

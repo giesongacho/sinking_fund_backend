@@ -9,29 +9,31 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      // define association here
+    static associate({User}) {
+      // // define association here
+      this.belongsTo(User,{foreignKey: "user_id",targetKey: 'user_id', as:'user'})
     }
   }
   Heads.init({
     head_id: {
-      DataTypes:DataTypes.UUID,
+      type:DataTypes.UUID,
       defaultValue:DataTypes.UUIDV4
     },
     head_count: {
-      DataTypes:DataTypes.INTEGER,
-      allowNull:FALSE
+      type:DataTypes.INTEGER,
+      allowNull:false
     },
     head_amount: {
-      DataTypes:DataTypes.INTEGER,
-      allowNull:FALSE
+      type:DataTypes.INTEGER,
+      allowNull:false
     },
     head_status: {
-      DataTypes:DataTypes.INTEGER,
-      allowNull:FALSE
+      type:DataTypes.INTEGER,
+      allowNull:false
     },
   }, {
     sequelize,
+    tableName: 'Heads',
     modelName: 'Heads',
   });
   return Heads;

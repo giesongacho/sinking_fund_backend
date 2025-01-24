@@ -19,7 +19,7 @@ module.exports = {
         allowNull:false,
         references: {
           model:'User',
-          key:'uuid'
+          key:'user_id'
         },
         onDelete: 'CASCADE'
       },
