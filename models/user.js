@@ -28,10 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false
     },
-    status: {
-      type:DataTypes.INTEGER,
-      allowNull:false
-    }
   }, {
     sequelize,
     tableName: 'Users',

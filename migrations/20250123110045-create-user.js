@@ -6,12 +6,13 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement:true,
+        primaryKey:true,
         type: Sequelize.INTEGER
       },
       user_id: {
         type:Sequelize.UUID,
         defaultValue:Sequelize.UUIDV4,
-        primaryKey:true,
+        unique:true,
         allowNull:false
       },
       firstname: {
@@ -22,10 +23,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull:false
       },
-      status: {
-        type: Sequelize.INTEGER,
-        allowNull:false,
-        defaultValue:0
+      status:{
+        type:Sequelize.INTEGER,
+        defaultValue:0,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,

@@ -21,20 +21,17 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.UUID,
       defaultValue:DataTypes.UUIDV4
     },
-    user_contributed: {
+    amount_contributed: {
       type:DataTypes.INTEGER,
       allowNull:false
     },
-    date_contribute: {
+    date_contributed: {
       type:DataTypes.DATEONLY,
       allowNull:false
     },
-    status: {
-      type:DataTypes.INTEGER,
-      allowNull:false
-    }
   }, {
     sequelize,
+    tableName: 'UserFunds',
     modelName: 'UserFund',
   });
   return UserFund;
