@@ -9,8 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate({UserFund}) {
       // define association here
+      this.belongsTo(UserFund,{foreignKey: "fund_id",targetKey: 'fund_id', as:'user_fund'})
+
     }
   }
   Credit_Balance.init({
@@ -24,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
+    tableName:'Credit_Balances',
     modelName: 'Credit_Balance',
   });
   return Credit_Balance;

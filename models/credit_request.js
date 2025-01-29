@@ -9,8 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate({UserFund}) {
       // define association here
+      this.belongsTo(UserFund,{foreignKey: "fund_id",targetKey: 'fund_id', as:'user_fund'})
+
     }
   }
   Credit_Request.init({
@@ -26,12 +28,9 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.DATEONLY,
       allowNull:false
     },
-    status: {
-      type:DataTypes.INTEGER,
-      allowNull:false
-    }
   }, {
     sequelize,
+    tableName: 'Credit_Requests',
     modelName: 'Credit_Request',
   });
   return Credit_Request;

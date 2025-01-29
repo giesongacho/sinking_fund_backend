@@ -12,7 +12,8 @@ module.exports = {
       fund_id: {
         type:Sequelize.UUID,
         defaultValue:Sequelize.UUIDV4,
-        allowNull:false
+        allowNull:false,
+        unique:true
       },
       user_id: {
         type:Sequelize.UUID,
