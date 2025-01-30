@@ -43,6 +43,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    },
+    {
+      indexes: [
+        {
+          fields: ['fund_id']
+        }
+      ]
     });
   },
   async down(queryInterface, Sequelize) {

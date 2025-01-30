@@ -45,7 +45,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    },
+    {
+      indexes: [
+        {
+          unique: true,
+          fields: ['fund_id']
+        },
+        {
+          fields: ['user_id']
+        }
+      ]
+    }
+  );
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('UserFunds');

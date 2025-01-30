@@ -12,6 +12,7 @@ module.exports = {
       fund_id: {
         type:Sequelize.UUID,
         allowNull:false,
+        unique:true,
         references: {
           model:'UserFunds',
           key:'fund_id'
