@@ -3,7 +3,7 @@ const {Op} = require('sequelize')
 const UserController = {
     async CreateUser (req,res) {
         const {firstname,lastname} = req.body;
-       
+       //Checking if Firstname or lastname excess in database record
         try{
             const checkUser = await User.findOne({
                 where:{

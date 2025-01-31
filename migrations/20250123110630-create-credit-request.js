@@ -22,6 +22,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull:false
       },
+      requested_amount_interest :{
+        type:Sequelize.DECIMAL(3,2),
+        allowNull:false,
+        defaultValue:0.10
+      },
       payment_terms: {
         type: Sequelize.INTEGER,
         allowNull:false
@@ -43,13 +48,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    },
-    {
-      indexes: [
-        {
-          fields: ['fund_id']
-        }
-      ]
     });
   },
   async down(queryInterface, Sequelize) {

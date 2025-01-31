@@ -19,13 +19,21 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
+      credit_payment : {
+        type:Sequelize.INTEGER,
+        allowNull:false
+      },
       balance: {
         type: Sequelize.INTEGER,
         allowNull:false
       },
+      credit_payment_date:{
+        type:Sequelize.DATEONLY,
+        allowNull:false
+      },
       due_date: {
         type: Sequelize.DATEONLY,
-        allowNull:false
+        allowNull:true
       },
       createdAt: {
         allowNull: false,

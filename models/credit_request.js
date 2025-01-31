@@ -20,6 +20,15 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.INTEGER,
       allowNull:false
     },
+    requested_amount_interest :{
+      type:DataTypes.DECIMAL(3,2),
+      allowNull:false,
+      defaultValue:0.10,
+      get() {
+        const value = this.getDataValue('requested_amount_interest');
+        return value ? Number(value).toFixed(2) : null;
+      }
+    },
     payment_terms: {
       type:DataTypes.INTEGER,
       allowNull:false

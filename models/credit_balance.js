@@ -16,13 +16,21 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Credit_Balance.init({
+    credit_payment : {
+      type:DataTypes.INTEGER,
+      allowNull:false
+    },
     balance: {
       type:DataTypes.INTEGER,
       allowNull:false
     },
-    due_date: {
+    credit_payment_date:{
       type:DataTypes.DATEONLY,
       allowNull:false
+    },
+    due_date: {
+      type:DataTypes.DATEONLY,
+      allowNull:true
     }
   }, {
     sequelize,
