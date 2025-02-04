@@ -9,13 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({UserFund}) {
+    static associate({UserFund,Credit_Balance,Credit_Payment}) {
       // define association here
       this.belongsTo(UserFund,{foreignKey: "fund_id",targetKey: 'fund_id', as:'user_fund'})
-
+      this.hasMany(Credit_Balance,{foreignKey: 'request_id',sourceKey:'request_id',as: 'creadit_balance',onDelete: 'CASCADE'})
+      this.hasMany(Credit_Payment,{foreignKey: 'request_id',sourceKey:'request_id',as: 'creadit_payment',onDelete: 'CASCADE'})
     }
   }
   Credit_Request.init({
+    request_id: {
+      type:DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4
+    },
     request_amount: {
       type:DataTypes.INTEGER,
       allowNull:false

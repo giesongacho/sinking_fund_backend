@@ -9,6 +9,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      request_id: {
+        type:Sequelize.UUID,
+        defaultValue:Sequelize.UUIDV4,
+        allowNull:false,
+        unique:true
+      },
       fund_id: {
         type:Sequelize.UUID,
         allowNull:false,

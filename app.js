@@ -10,10 +10,10 @@ const creditRequestRoutes = require('./routes/creditRequestRoutes.js')
 const creditBalanceRoutes = require('./routes/creditBalanceRoutes.js')
 
 app.use('/api',userRoutes);
-app.use('/fund/api',userFundRoute);
-app.use('/head/api', headRoutes);
-app.use('/credit/request/api', creditRequestRoutes);
-app.use('/credit/balance/api', creditBalanceRoutes);
+app.use('/api/fund',userFundRoute);
+app.use('/api/head', headRoutes);
+app.use('/api/credit/request', creditRequestRoutes);
+app.use('/api/credit/balance', creditBalanceRoutes);
 
 const port = 5000
 app.listen({ port }, async () => {

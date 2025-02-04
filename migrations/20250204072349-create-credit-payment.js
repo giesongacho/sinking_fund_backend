@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Credit_Balances', {
+    await queryInterface.createTable('Credit_Payments', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,19 +19,14 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      balance: {
-        type: Sequelize.INTEGER,
+      credit_payment_amount : {
+        type:Sequelize.INTEGER,
         allowNull:false,
         defaultValue:0
       },
-      due_date: {
-        type: Sequelize.DATEONLY,
-        allowNull:false
-      },
-      status: {
-        type: Sequelize.INTEGER,
-        allowNulll:false,
-        defaultValue:0
+      credit_payment_date:{
+        type:Sequelize.DATEONLY,
+        allowNull:true,
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +39,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Credit_Balances');
+    await queryInterface.dropTable('Credit_Payments');
   }
 };

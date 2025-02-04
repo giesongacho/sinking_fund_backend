@@ -1,4 +1,4 @@
-const {Credit_Request,UserFund} = require('../models')
+const {Credit_Request,UserFund,User} = require('../models')
 const CreditRequestController = {
     async CreateCreditRequest (req,res) {
         const {request_amount,requested_amount_interest,payment_terms,request_date} = req.body
@@ -18,13 +18,12 @@ const CreditRequestController = {
     },
     async ListCreditRequest (req,res) {
         try{
-            const data = await Credit_Request.findOne()
-            // console.log(typeof(Number(data.requested_amount_interest)))
-            console.log(data)
+            const data = await Credit_Request.findAll()
+            return res.status(200).json({data:data})
         }
         catch(err){
             return res.status(201).json(err)
         }
-    }
+    },
 }
 module.exports = CreditRequestController
