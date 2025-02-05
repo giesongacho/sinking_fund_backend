@@ -10,12 +10,19 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({Credit_Request}) {
-      // define association here
       this.belongsTo(Credit_Request,{foreignKey: "request_id",targetKey: 'request_id', as:'credit_request'})
 
     }
   }
   Credit_Balance.init({
+    request_id: {
+      type:DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4
+    },
+    balance:{
+      type:DataTypes.INTEGER,
+      allowNull:false
+    },
     due_date: {
       type:DataTypes.DATEONLY,
       allowNull:false

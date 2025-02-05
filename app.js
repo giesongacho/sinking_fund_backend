@@ -8,12 +8,14 @@ const userFundRoute = require('./routes/userFundRoute.js')
 const headRoutes = require('./routes/headRoute.js')
 const creditRequestRoutes = require('./routes/creditRequestRoutes.js')
 const creditBalanceRoutes = require('./routes/creditBalanceRoutes.js')
+const creditPaymentRoutes = require('./routes/creditPaymentRoutes.js')
 
 app.use('/api',userRoutes);
 app.use('/api/fund',userFundRoute);
 app.use('/api/head', headRoutes);
 app.use('/api/credit/request', creditRequestRoutes);
 app.use('/api/credit/balance', creditBalanceRoutes);
+app.use('/api/credit/payment', creditPaymentRoutes)
 
 const port = 5000
 app.listen({ port }, async () => {

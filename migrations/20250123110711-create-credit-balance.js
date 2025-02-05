@@ -22,7 +22,6 @@ module.exports = {
       balance: {
         type: Sequelize.INTEGER,
         allowNull:false,
-        defaultValue:0
       },
       due_date: {
         type: Sequelize.DATEONLY,

@@ -1,20 +1,25 @@
-const {Credit_Balance,UserFund,Credit_Request} = require('../models')
+const {Credit_Balance,Credit_Payment,Credit_Request} = require('../models')
 
 const CreditBalanceControler = {
     async CreateCreditBalance (req,res) {
         const {credit_payment_amount,credit_payment_date,due_date} = req.body;
         try{
             const credit_request = await Credit_Request.findOne({where:{fund_id:req.params.uuid}})
+            const payment_Id = await Credit_Payment.findOne({where:{fund_id:req.params.uuid}})
+
             const request_amount =  credit_request.request_amount;
             const request_interest = credit_request.requested_amount_interest;
 
+            console.log(payment_Id.credit_payment_amount)
             //request amount + interest of requested amount
-            const money_requested_interest = request_amount * request_interest;
-            console.log(money_requested_interest)
 
-            const check_balance = await Credit_Request.findAll()
-            console.log(money_requested_interest)
-          
+            // const money_requested_interest = request_amount * request_interest;
+            // console.log(money_requested_interest)
+
+            // const check_balance = await Credit_Request.findAll()
+            // console.log(money_requested_interest)
+            
+            
             // const lastIndex = (arr) => arr.length -1;
             // console.log(check_balance[lastIndex(check_balance)])
             // if(!check_balance){

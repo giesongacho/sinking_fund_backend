@@ -14,10 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Credit_Payment.init({
+    request_id: {
+      type:DataTypes.UUID,
+      defaultValue:DataTypes.UUIDV4
+    },
     credit_payment_amount : {
       type:DataTypes.INTEGER,
       allowNull:false,
-      defaultValue:0
     },
     credit_payment_date:{
       type:DataTypes.DATEONLY,
