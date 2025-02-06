@@ -12,7 +12,6 @@ module.exports = {
       request_id: {
         type:Sequelize.UUID,
         allowNull:false,
-        unique:true,
         references: {
           model:'Credit_Requests',
           key:'request_id'
