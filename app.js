@@ -1,5 +1,6 @@
 const {sequelize} = require('./models');
 const express = require('express');
+const cors = require('cors')
 const app = express();
 app.use(express.json());
 
@@ -9,6 +10,12 @@ const headRoutes = require('./routes/headRoute.js')
 const creditRequestRoutes = require('./routes/creditRequestRoutes.js')
 const creditBalanceRoutes = require('./routes/creditBalanceRoutes.js')
 const creditPaymentRoutes = require('./routes/creditPaymentRoutes.js')
+
+app.use(cors({
+    origin:['http://localhost:3000'],
+    method: ['GET','POST'],
+    allowedHeaders: ['Content-type', 'Authorization']
+}))
 
 app.use('/api',userRoutes);
 app.use('/api/fund',userFundRoute);

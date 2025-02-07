@@ -5,28 +5,31 @@ const creditPaymentController = {
         const {credit_payment_amount,credit_payment_date} = req.body;
         try{
             const requestId = await Credit_Request.findOne({where:{request_id:req.params.uuid}})
-            const totalPayment = await Credit_Payment.findAll({where:{request_id:req.params.uuid}})
-            const payment = await Credit_Payment.create({request_id:req.params.uuid,credit_payment_amount,credit_payment_date})
+         
             if(!requestId){
                 return res.json({message: 'no Request ID found'})
             }else{
-              const total = totalPayment.reduce((add,payment)=>{
+            const totalPayment = Number(requestId.request_amount) * Number(requestId.requested_amount_interest);
+            const totalPaymentWithInterest = Number(requestId.request_amount) + totalPayment
+
+            const payment = await Credit_Payment.create({request_id:req.params.uuid,credit_payment_amount,credit_payment_date})
+
+            const totalPaid= await Credit_Payment.findAll({where:{request_id:req.params.uuid}})
+
+            const total = totalPaid.reduce((add,payment)=>{
                 return (add + payment.credit_payment_amount)
               },0)
-              console.log('requested amount',requestId.request_amount)
-                // const payment_Id = await Credit_Payment.findOne({where:{fund_id:req.params.uuid}})
+              
+            const remainingBalance  = totalPaymentWithInterest  - total
 
-                
+            
 
-                // const updated = await Credit_Balance.findOne({where:{request_id:req.params.uuid}})
-                // updated.balance = requestId.request_amount - total;
-                // updated.due_date = updated.due_date
-                // await updated.save()
-                // return res.json({data:payment})
-                // const balance = await Credit_Balance.create({request_id:req.params.uuid,balance:requestId.request_amount - total,due_date:'2025-05-03'})
-                console.log( total)
-                return res.json({data:payment})
-             
+            const balance = await Credit_Balance.create({request_id:req.params.uuid,balance:remainingBalance,due_date:'2025-05-03'})
+
+            // const currentBanace = await Credit_Balance.findOne({where:{request_id:req.params.uuid}})
+
+
+            return res.json({data:payment})
             }
             
         }catch(err){
