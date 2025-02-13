@@ -22,6 +22,23 @@ const UserController = {
         }catch(err){
             return res.status(401).json(err)
         }
+    }, 
+  async GetUser (req,res) {
+    try{
+      const data = await User.findAll()
+      return res.status(200).json({data:data})
+    }catch(err){
+      return res.status(201).json(err)
     }
+  },
+  async DeleteUser (req,res) {
+    try{
+      const deleteUser = await User.findOne({where:{user_id:req.params.uuid}});
+      deleteUser.destroy()
+      return res.status(200).json({message: 'Successfully Deleted'})
+    }catch(err){
+      return res.status(201).json(err)
+    }
+  }
 }
 module.exports = UserController;
