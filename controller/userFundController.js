@@ -12,6 +12,15 @@ const UserFundController = {
         }catch(err){
             return res.status(401).json(err)
         }
+    },
+    async UserFundList (req,res) {
+        try{
+            const data = await UserFund.findAll({where:{user_id:req.params.uuid}})
+            return res.status(200).json({data:data})
+        }catch(err){
+            return res.status(201).json(err)
+        }
+
     }
 }
 module.exports = UserFundController;
