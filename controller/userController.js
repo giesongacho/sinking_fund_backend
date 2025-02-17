@@ -13,11 +13,11 @@ const UserController = {
                     ]
                 }
             })
-          if(!checkUser){
+          if(firstname && lastname){
             const insertUser = await User.create({firstname,lastname})
-            return res.status(200).json({data:insertUser,message:'Successfully Created',status:true})
+            return res.status(200).json({data:insertUser,message:'Successfully Created'})
           }else{
-            return res.status(201).json({message:'Firstname or Lastname already excess, use different Firstname or Lastname',status:false})
+            return res.status(201).json({message:'Firstname or Lastname already excess, use different Firstname or Lastname'})
           }
         }catch(err){
             return res.status(401).json(err)
