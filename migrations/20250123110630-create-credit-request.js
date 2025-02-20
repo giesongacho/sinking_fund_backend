@@ -11,7 +11,7 @@ module.exports = {
       },
       request_id: {
         type:Sequelize.UUID,
-        defaultValue:Sequelize.UUIDV4,
+        defaultValue:Sequelize.UUIDV4,   
         allowNull:false,
         unique:true
       },
@@ -20,7 +20,7 @@ module.exports = {
         allowNull:false,
         references: {
           model:'UserFunds',
-          key:'fund_id'
+          key:'user_id'
         },
         onDelete: 'CASCADE'
       },

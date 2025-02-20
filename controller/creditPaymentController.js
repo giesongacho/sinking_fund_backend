@@ -4,11 +4,16 @@ const creditPaymentController = {
     async CreateCreditPayment (req,res) {
         const {credit_payment_amount,credit_payment_date} = req.body;
         try{
-            const requestId = await Credit_Request.findOne({where:{request_id:req.params.uuid}})
-         
+            const requestId = await Credit_Request.findOne({
+                where: {
+                    request_id: req.params.uuid
+                },
+                attributes: ['request_id']
+            });
             if(!requestId){
                 return res.json({message: 'no Request ID found'})
             }else{
+                
             const totalPayment = Number(requestId.request_amount) * Number(requestId.requested_amount_interest);
             const totalPaymentWithInterest = Number(requestId.request_amount) + totalPayment
 

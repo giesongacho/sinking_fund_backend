@@ -3,7 +3,8 @@ const CreditRequestController = {
     async CreateCreditRequest (req,res) {
         const {request_amount,requested_amount_interest,payment_terms,request_date} = req.body
         try{
-            const userFundId = await UserFund.findOne({where:{fund_id:req.params.uuid}})
+            const userFundId = await UserFund.findOne({where:{user_id:req.params.uuid}})
+            // return res.json(userFundId)
              if(!userFundId){
                 return res.status(201).json({message: 'Fund id not found'})
              }

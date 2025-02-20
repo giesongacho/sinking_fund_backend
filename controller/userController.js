@@ -1,4 +1,4 @@
-const {User} = require('../models')
+const {User,UserFund} = require('../models')
 const {Op} = require('sequelize')
 const UserController = {
     async CreateUser (req,res) {
@@ -26,6 +26,16 @@ const UserController = {
   async GetUser (req,res) {
     try{
       const data = await User.findAll()
+      //   const data = await User.findAll({
+      //   include: [{
+      //     model: UserFund,
+      //     as: 'user_fund',
+      //     attributes: ['fund_id', 'amount_contributed', 'date_contributed'],
+      //     required: false
+      //   }],
+      //   attributes: ['user_id','firstname','lastname','status']
+      // });
+
       return res.status(200).json({data:data})
     }catch(err){
       return res.status(201).json(err)

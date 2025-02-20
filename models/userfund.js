@@ -12,13 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate({User,Credit_Request,Credit_Balance}) {
       // define association here
       this.belongsTo(User,{foreignKey: "user_id",targetKey: 'user_id', as:'user'})
-      this.hasMany(Credit_Request,{foreignKey: 'fund_id',sourceKey:'fund_id',as: 'creadit_request',onDelete: 'CASCADE'})
+      this.hasMany(Credit_Request,{foreignKey: 'user_id',sourceKey:'user_id',as: 'credit_request',onDelete: 'CASCADE'})
     }
   }
   UserFund.init({
     fund_id: {
       type:DataTypes.UUID,
       defaultValue:DataTypes.UUIDV4
+    },
+    user_id:{
+      type: DataTypes.UUID,
+      allowNull: false
     },
     amount_contributed: {
       type:DataTypes.INTEGER,
