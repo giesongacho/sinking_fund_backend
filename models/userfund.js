@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({User,Credit_Request,Credit_Balance}) {
       // define association here
       this.belongsTo(User,{foreignKey: "user_id",targetKey: 'user_id', as:'user'})
-      this.hasMany(Credit_Request,{foreignKey: 'fund_id',sourceKey:'fund_id',as: 'credit_request',onDelete: 'CASCADE'})
+      // this.hasMany(Credit_Request,{foreignKey: 'fund_id',sourceKey:'fund_id',as: 'credit_request',onDelete: 'CASCADE'})
     }
   }
   UserFund.init({

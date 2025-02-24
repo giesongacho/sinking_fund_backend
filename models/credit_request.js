@@ -9,8 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({UserFund,Credit_Balance,Credit_Payment}) {
+    static associate({UserFund,Credit_Balance,Credit_Payment,User}) {
       // define association here
+      this.belongsTo(User,{foreignKey:'user_id', targetKey: 'user_id' , as: 'user'})
       this.hasMany(Credit_Balance,{foreignKey: 'request_id',sourceKey:'request_id',as: 'credit_balance',onDelete: 'CASCADE'})
       this.hasMany(Credit_Payment,{foreignKey: 'request_id',sourceKey:'request_id',as: 'credit_payment',onDelete: 'CASCADE'})
     }
@@ -20,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.UUID,
       defaultValue:DataTypes.UUIDV4
     },
-    fund_id:{
+    user_id:{
       type: DataTypes.UUID,
       allowNull: false
     },

@@ -15,11 +15,11 @@ module.exports = {
         allowNull:false,
         unique:true
       },
-      fund_id: {
+      user_id: {
         type:Sequelize.UUID,
         allowNull:false,
         references: {
-          model:'UserFunds',
+          model:'Users',
           key:'user_id'
         },
         onDelete: 'CASCADE'
