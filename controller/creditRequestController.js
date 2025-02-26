@@ -23,7 +23,7 @@ const CreditRequestController = {
                 include: [{
                     model: Credit_Request,
                     as: 'credit',
-                    attributes: ['request_amount','requested_amount_interest','payment_terms', 'request_date','status']
+                    attributes: ['request_amount','requested_amount_interest','payment_terms', 'request_date','status', 'request_id']
                 }],
                 attributes: ['user_id', 'firstname', 'lastname']
             })
@@ -34,5 +34,27 @@ const CreditRequestController = {
             return res.status(201).json(err)
         }
     },
+    async UpdateCreditStatus (req,res) {
+        try{
+            const data = await Credit_Request.findOne({where:{request_id:req.params.uuid}})
+            data.status = 1;
+            await data.save()
+
+            return res.json({data:data})
+        }catch(err){
+            return res.status(401).json(err)
+        }
+    },
+    async DeleteDeclineLoan (req,res) {
+       try{
+        const data = await Credit_Request.findOne({where:{request_id:req.params.uuid}});
+        await data.destroy()
+
+        return res.status(200).json({data:data})
+        
+       }catch(err){
+        return res.status(401).json(err)
+       }
+    }
 }
 module.exports = CreditRequestController
