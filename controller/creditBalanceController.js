@@ -11,6 +11,7 @@ const CreditBalanceControler = {
             const request_interest = credit_request.requested_amount_interest;
 
             console.log(payment_Id.credit_payment_amount)
+            const balance = await Credit_Balance
             //request amount + interest of requested amount
 
             // const money_requested_interest = request_amount * request_interest;
@@ -58,6 +59,14 @@ const CreditBalanceControler = {
             // return res.json(credit_request)
             // const balanceCredit =  await Credit_Balance.create({fund_id:req.params.uuid,credit_payment,balance,credit_payment_date,due_date});
             // return res.status(200).json({message: 'Successfully Created', data:balanceCredit})
+        }catch(err){
+            return res.status(401).json(err)
+        }
+    },
+    async BalanceList (req,res) {
+        try{
+            const balance = await Credit_Balance.findAll({where:{user_id:req.params.uuid}})
+            return res.status(201).json({data: balance})
         }catch(err){
             return res.status(401).json(err)
         }

@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.UUID,
       defaultValue:DataTypes.UUIDV4
     },
+    user_id:{
+      type: DataTypes.UUID,
+      allowNull: false
+    },
     credit_payment_amount : {
       type:DataTypes.INTEGER,
       allowNull:false,

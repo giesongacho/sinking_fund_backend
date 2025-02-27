@@ -18,9 +18,18 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.UUID,
       defaultValue:DataTypes.UUIDV4
     },
+    user_id:{
+      type: DataTypes.UUID,
+      allowNull: false
+    },
     balance:{
       type:DataTypes.INTEGER,
       allowNull:false
+    },
+    status: {
+      type: DataTypes.INTEGER,
+      allowNulll:false,
+      defaultValue:0
     },
     due_date: {
       type:DataTypes.DATEONLY,

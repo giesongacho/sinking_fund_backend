@@ -18,6 +18,15 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
+      user_id: {
+        type:Sequelize.UUID,
+        allowNull:false,
+        references: {
+          model:'Users',
+          key:'user_id'
+        },
+        onDelete: 'CASCADE'
+      },
       credit_payment_amount : {
         type:Sequelize.INTEGER,
         allowNull:false,
