@@ -80,10 +80,10 @@ const CreditRequestController = {
                     return add + balances.balance
                 },0)
 
-                totalLoanBalance.balance = mergeBalance;
-                await totalLoanBalance.save()
+                // totalLoanBalance.balance = mergeBalance;
+                // await totalLoanBalance.save()
 
-                console.log('merge',mergeBalance)
+                // console.log('merge',mergeBalance)
 
                 return res.json({data:totalLoanBalance})
 
