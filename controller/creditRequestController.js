@@ -64,17 +64,34 @@ const CreditRequestController = {
                 const totalPayment = Number(data.request_amount) * Number(data.requested_amount_interest);
                 const totalPaymentWithInterest = Number(data.request_amount) + totalPayment
 
-                
-                const balance = await Credit_Balance.create(
-                    {
-                        request_id:req.params.uuid,
-                        user_id:data.user_id,
-                        balance:totalPaymentWithInterest,
-                        due_date:dueDate(requestDate,dueDates),
-                        status:1
-                    }
-                )
-                const totalLoanBalance = await Credit_Balance.findAll({where:{user_id:data.user_id}})
+            
+                const totalLoanBalance = await Credit_Balance.findOne({where:{user_id:data.user_id}})
+
+               
+                if(totalLoanBalance){
+                    totalLoanBalance.request_id = req.params.uuid
+                    totalLoanBalance.user_id = data.user_id
+                    totalLoanBalance.balance = totalLoanBalance.balance + totalPaymentWithInterest
+                    totalLoanBalance.due_date = dueDate(requestDate,dueDates)
+                    totalLoanBalance.status = 0
+
+                await totalLoanBalance.save()
+                }else{
+                    
+                    const balance = await Credit_Balance.create(
+                        {
+                            request_id:req.params.uuid,
+                            user_id:data.user_id,
+                            balance:totalPaymentWithInterest,
+                            due_date:dueDate(requestDate,dueDates),
+                            status:0
+                        }
+                    )
+                }
+                const finalData = totalLoanBalance.map((value)=>{
+                    return value.balance
+                })
+                // console.log('dagat',finalData)
 
                 const mergeBalance = totalLoanBalance.reduce((add,balances)=>{
                     return add + balances.balance

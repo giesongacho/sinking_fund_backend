@@ -11,7 +11,7 @@ module.exports = {
       },
       request_id: {
         type:Sequelize.UUID,
-        allowNull:false,
+        allowNull:true,
         references: {
           model:'Credit_Requests',
           key:'request_id'
@@ -20,7 +20,7 @@ module.exports = {
       },
       user_id: {
         type:Sequelize.UUID,
-        allowNull:false,
+        allowNull:true,
         references: {
           model:'Users',
           key:'user_id'
@@ -29,15 +29,15 @@ module.exports = {
       },
       balance: {
         type: Sequelize.INTEGER,
-        allowNull:false,
+        allowNull:true,
       },
       due_date: {
         type: Sequelize.DATEONLY,
-        allowNull:false
+        allowNull:true
       },
       status: {
         type: Sequelize.INTEGER,
-        allowNulll:false,
+        allowNulll:true,
         defaultValue:0
       },
       createdAt: {

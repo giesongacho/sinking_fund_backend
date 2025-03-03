@@ -16,24 +16,25 @@ module.exports = (sequelize, DataTypes) => {
   Credit_Balance.init({
     request_id: {
       type:DataTypes.UUID,
-      defaultValue:DataTypes.UUIDV4
+      defaultValue:DataTypes.UUIDV4,
+      allowNull:true
     },
     user_id:{
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: true
     },
     balance:{
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull:true
     },
     status: {
       type: DataTypes.INTEGER,
-      allowNulll:false,
+      allowNulll:true,
       defaultValue:0
     },
     due_date: {
       type:DataTypes.DATEONLY,
-      allowNull:false
+      allowNull:true
     }
   }, {
     sequelize,

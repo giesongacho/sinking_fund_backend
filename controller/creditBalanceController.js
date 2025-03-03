@@ -66,6 +66,11 @@ const CreditBalanceControler = {
     async BalanceList (req,res) {
         try{
             const balance = await Credit_Balance.findAll({where:{user_id:req.params.uuid}})
+            // const filterBalance = balance.filter((value)=> value.balance !== 0)
+            // const mapping = filterBalance.map((value)=>{
+            //     console.log(value.balance)
+            // })
+            // return mapping
             return res.status(201).json({data: balance})
         }catch(err){
             return res.status(401).json(err)
