@@ -2,7 +2,7 @@ const {User,UserFund} = require('../models')
 const {Op} = require('sequelize')
 const UserController = {
     async CreateUser (req,res) {
-        const {firstname,lastname} = req.body;
+        const {firstname,lastname,head_count,head_amount} = req.body;
        //Checking if Firstname or lastname excess in database record
         try{
             const checkUser = await User.findOne({
@@ -14,7 +14,7 @@ const UserController = {
                 }
             })
           if(firstname && lastname){
-            const insertUser = await User.create({firstname,lastname})
+            const insertUser = await User.create({firstname,lastname,head_count,head_amount})
             return res.status(200).json({data:insertUser,message:'Successfully Created'})
           }else{
             return res.status(201).json({message:'Firstname or Lastname already excess, use different Firstname or Lastname'})

@@ -9,10 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({Heads,UserFund,Credit_Request,Credit_Payment,Credit_Balance}) {
-      this.hasMany(Heads, {foreignKey: 'user_id',sourceKey: 'user_id',as:'heads',onDelete: 'CASCADE'})
+    static associate({UserFund,Credit_Request,Credit_Payment,Credit_Balance}) {
       this.hasMany(UserFund, {foreignKey: 'user_id',sourceKey: 'user_id',as:'user_fund',onDelete: 'CASCADE'})
       this.hasMany(Credit_Request,{foreignKey: 'user_id',sourceKey: 'user_id',as:'credit',onDelete: 'CASCADE'})
+      this.hasMany(Credit_Payment, {foreignKey: 'user_id',sourceKey: 'user_id',as:'credit_payment',onDelete: 'CASCADE'})
+      this.hasMany(Credit_Balance,{foreignKey: 'user_id',sourceKey: 'user_id',as:'credit_balance',onDelete: 'CASCADE'})
     }
   }
   User.init({
@@ -28,6 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       allowNull:false
     },
+    head_count: {
+      type:DataTypes.INTEGER,
+      allowNull:false
+    },
+    head_amount: {
+      type:DataTypes.INTEGER,
+      allowNull:false
+    }
   }, {
     sequelize,
     tableName: 'Users',

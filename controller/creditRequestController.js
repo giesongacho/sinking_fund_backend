@@ -73,11 +73,11 @@ const CreditRequestController = {
                     totalLoanBalance.user_id = data.user_id
                     totalLoanBalance.balance = totalLoanBalance.balance + totalPaymentWithInterest
                     totalLoanBalance.due_date = dueDate(requestDate,dueDates)
-                    totalLoanBalance.status = 0
+                    totalLoanBalance.status = 1
 
                 await totalLoanBalance.save()
                 }else{
-                    
+
                     const balance = await Credit_Balance.create(
                         {
                             request_id:req.params.uuid,
@@ -88,19 +88,13 @@ const CreditRequestController = {
                         }
                     )
                 }
-                const finalData = totalLoanBalance.map((value)=>{
-                    return value.balance
-                })
-                // console.log('dagat',finalData)
+                // const finalData = totalLoanBalance.map((value)=>{
+                //     return value.balance
+                // })
 
-                const mergeBalance = totalLoanBalance.reduce((add,balances)=>{
-                    return add + balances.balance
-                },0)
-
-                // totalLoanBalance.balance = mergeBalance;
-                // await totalLoanBalance.save()
-
-                // console.log('merge',mergeBalance)
+                // const mergeBalance = totalLoanBalance.reduce((add,balances)=>{
+                //     return add + balances.balance
+                // },0)
 
                 return res.json({data:totalLoanBalance})
 

@@ -23,6 +23,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull:false
       },
+      head_count: {
+        type:Sequelize.INTEGER,
+        allowNull:false
+      },
+      head_amount: {
+        type:Sequelize.INTEGER,
+        allowNull:false
+      },
       status:{
         type:Sequelize.INTEGER,
         defaultValue:0,

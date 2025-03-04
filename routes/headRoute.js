@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router()
-const HeadController = require('../controller/headController')
+// const express = require('express');
+// const router = express.Router()
+// const HeadController = require('../controller/headController')
 
-router.post('/create/:uuid', HeadController.CreateHead)
+// router.post('/create/:uuid', HeadController.CreateHead)
 
-module.exports = router;
+// module.exports = router;
