@@ -12,7 +12,7 @@ const creditBalanceRoutes = require('./routes/creditBalanceRoutes.js')
 const creditPaymentRoutes = require('./routes/creditPaymentRoutes.js')
 
 app.use(cors({
-    origin:['http://localhost','http://localhost:5000','http://localhost:8080'],
+    origin:['http://localhost', 'http://localhost/sinking_app','http://localhost:5173'],
     method: ['GET','POST'],
     allowedHeaders: ['Content-type', 'Authorization']
 }))
