@@ -23,7 +23,7 @@ const CreditRequestController = {
                 include: [{
                     model: Credit_Request,
                     as: 'credit',
-                    attributes: ['request_amount','requested_amount_interest','payment_terms', 'request_date','status', 'request_id']
+                    attributes: ['request_amount','requested_amount_interest','payment_terms','requested_interest', 'request_date','status', 'request_id']
                 }],
                 attributes: ['user_id', 'firstname', 'lastname']
             })
@@ -45,10 +45,13 @@ const CreditRequestController = {
         }
     },
     async UpdateCreditStatus (req,res) {
+        const {requested_amount_interest} = req.body;
         try{
-            const data = await Credit_Request.findOne({where:{request_id:req.params.uuid}})
+            const data = await Credit_Request.findOne({where:{request_id:req.params.uuid}});
+            data.requested_interest = data.request_amount * requested_amount_interest; 
+            data.requested_amount_interest = requested_amount_interest;
             data.status = 1;
-            await data.save()
+            await data.save();
 
             const dueDate = (reqDate,payTerms) => {
                 const date = new Date(reqDate)
@@ -106,6 +109,7 @@ const CreditRequestController = {
     async DeleteDeclineLoan (req,res) {
        try{
         const data = await Credit_Request.findOne({where:{request_id:req.params.uuid}});
+        
         await data.destroy()
 
         return res.status(200).json({data:data})

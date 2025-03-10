@@ -38,6 +38,11 @@ module.exports = (sequelize, DataTypes) => {
         return value ? Number(value).toFixed(2) : null;
       }
     },
+    requested_interest:{
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      defaultValue:0
+    },
     status:{
       type: DataTypes.INTEGER,
       allowNulll:false,

@@ -33,6 +33,11 @@ module.exports = {
         allowNull:false,
         defaultValue:0.10
       },
+      requested_interest:{
+        type:Sequelize.INTEGER,
+        allowNull:false,
+        defaultValue:0
+      },
       payment_terms: {
         type: Sequelize.INTEGER,
         allowNull:false
