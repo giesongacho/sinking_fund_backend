@@ -40,15 +40,19 @@ const CreditBalanceControler = {
     async AvailableFund (req,res) {
         try{
             const payment = await Credit_Payment.findAll()
-            const balance = await UserFund.findAll()
+            const contribution = await UserFund.findAll()
+            const balance = await Credit_Balance.findAll()
 
             const PaymentCount =  payment.reduce((add,payment)=>{
                 return add + payment.credit_payment_amount
             },0)
-            const FundCount =  balance.reduce((add,fund)=>{
+            const BalanceCount =  balance.reduce((add,balance)=>{
+                return add + balance.balance
+            },0)
+            const FundCount =  contribution.reduce((add,fund)=>{
                 return add + fund.amount_contributed
             },0)
-            const available = PaymentCount + FundCount;
+            const available = PaymentCount + FundCount - BalanceCount;
             return res.status(200).json({data:available})
         }catch(err){
             return res.status(401).json(err)
