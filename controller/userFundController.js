@@ -1,5 +1,13 @@
 const {UserFund,User} = require('../models')
 const UserFundController = {
+    async getAllContribution (req,res) {
+        try{ 
+            const data = await UserFund.findAll();
+            return res.status(200).json({data:data})
+        }catch(err){
+            return res.status(401).json(err)
+        }
+    },
     async Userfund (req,res) {
         const {amount_contributed,date_contributed} = req.body
         try{

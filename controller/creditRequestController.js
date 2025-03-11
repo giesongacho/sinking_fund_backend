@@ -17,6 +17,14 @@ const CreditRequestController = {
             return res.status(401).json(err)
         }
     },
+    async GetCreditIntereset (req,res) {
+        try{
+            const interest = await Credit_Request.findAll()
+            return res.status(200).json({data:interest})
+        }catch(err){
+            return res.status(401).json(err)
+        }
+    },
     async ListCreditRequest (req,res) {
         try{
             const data = await User.findAll({
