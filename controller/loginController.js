@@ -15,11 +15,11 @@ const LoginController = {
             }else{
                 const token = jwt.sign({id:user.id},'LONG-TOKEN', {subject: 'accessapi',expiresIn:'1h'})
                 const {password:_, ...data} = user.dataValues
-                res.cookie('authToken', token, {
+                res.cookie('authTokens', token, {
                     httpOnly: true,
-                    secure:false,
-                    sameSite:'strict',
-                    maxAge:3600000
+                    // secure:false,
+                    // sameSite:'strict',
+                    // maxAge:3600000
                 })
                     return res.status(200).json({
                         message: 'Login successfully',

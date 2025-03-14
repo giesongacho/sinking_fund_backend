@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const {accessToken} = require('../config/accessToken')
 
 const LoginAuth = async (req,res,next) => {
-    const token = req.cookies.authToken;
+    const token = req.cookies.authTokens;
     if(!token){
         return res.status(401).json({message: 'No token,authorization denied'})
     }
