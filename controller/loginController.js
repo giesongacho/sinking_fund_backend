@@ -11,15 +11,15 @@ const LoginController = {
             const isPasswordValid = await bcrypt.compare(password,user.password);
 
             if(!username || !(await bcrypt.compare(password,user.password))){
-                return res.status(201).json({message: 'Username or Password Incorrect',success:false})
+                return res.status(401).json({message: 'Username or Password Incorrect',success:false})
             }else{
-                const token = jwt.sign({id:user.id},'LONG-TOKEN', {subject: 'accessapi',expiresIn:'60000'})
+                const token = jwt.sign({id:user.id},'LONG-TOKEN', {subject: 'accessapi',expiresIn:'3600000'})
                     const {password:_, ...data} = user.dataValues
                     res.cookie('authTokens', token, {
                         httpOnly: true,
-                        secure:false,
+                        secure:true,
                         sameSite:'strict',
-                        maxAge:60000 
+                        maxAge:3600000 
                     })
                     const mailOption = {
                         to: "akiratakishig@gmail.com",
@@ -34,29 +34,13 @@ const LoginController = {
                             success:true,
                         })
             }
-            // if
-            // if(username !== user.username){
-            //     return res.status(401).json({message: 'Incorrect Username or Password',status: 'fail'})
-            // }else if(!isPasswordValid){
-            //     return res.status(401).json({message: 'Incorrect Password',status: 'fail'})
-            // }else{
-            //     const token = jwt.sign({id:user.id},'LONG-TOKEN', {subject: 'accessapi',expiresIn:'1h'})
-            //     const {password:_, ...data} = user.dataValues
-            //     res.cookie('authTokens', token, {
-            //         httpOnly: true,
-            //         secure:false,
-            //         sameSite:'strict',
-            //         maxAge:3600000
-            //     })
-            //         return res.status(200).json({
-            //             message: 'Login successfully',
-            //             data
-            //         })
-                
-            // }
         }catch(err){
             res.status(401).json(err)
         }
+    },
+    async LogoutUser (req,res) {
+        res.clearCookie(authTokens)
+        return res.status(401).json({status:'Success'})
     },
     async CheckAuth (req,res) {
         const token = req.cookies.authTokens; // your cookie name
