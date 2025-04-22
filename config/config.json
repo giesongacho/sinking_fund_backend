@@ -1,8 +1,9 @@
+
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "sinking_app",
+    "username": "sinking_user",
+    "password": "gacho01000111",
+    "database": "sinking_fund_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
