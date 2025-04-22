@@ -31,7 +31,7 @@ app.use('/api/credit/request', creditRequestRoutes);
 app.use('/api/credit/balance', creditBalanceRoutes);
 app.use('/api/credit/payment', creditPaymentRoutes)
 
-const port = process.send.PORT | 3000
+const port = process.send.PORT | 5000
 app.listen({ port }, async () => {
     console.log(`Server is now listening at port: ${port}`);
     // console.log(`JWT_SECRET is set`);
