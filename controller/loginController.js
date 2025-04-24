@@ -21,12 +21,12 @@ const LoginController = {
                         sameSite:'strict',
                         maxAge:3600000 
                     })
-                    const mailOption = {
-                        to: "akiratakishig@gmail.com",
-                        subject: "hello this message from giesongacho gmail",
-                        text: "this is for testing from giesongacho1@gmail to akiratakishig@gmail"
-                    }
-                    // await transporter.sendMail(mailOption)
+                    // const mailOption = {
+                    //     to: "akiratakishig@gmail.com",
+                    //     subject: "hello this message from giesongacho gmail",
+                    //     text: "this is for testing from giesongacho1@gmail to akiratakishig@gmail"
+                    // }
+                    // // await transporter.sendMail(mailOption)
 
                         return res.status(200).json({
                             message: 'Login successfully',
