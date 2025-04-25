@@ -18,7 +18,7 @@ const LoginController = {
                     res.cookie('authTokens', token, {
                         httpOnly: true,
                         secure:true,
-                        sameSite:'strict',
+                        sameSite:'none',
                         maxAge:3600000 
                     })
                     // const mailOption = {
