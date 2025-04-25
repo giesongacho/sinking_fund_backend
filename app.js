@@ -19,7 +19,7 @@ const creditPaymentRoutes = require('./routes/creditPaymentRoutes.js')
 const loginRoutes = require('./routes/loginRoute.js')
 
 app.use(cors({
-    origin:['http://localhost', 'http://localhost/sinking_app','http://localhost:5173'],
+    origin:['http://localhost', 'http://localhost/sinking_app','http://localhost:5173','https://sinking-app.gachoworks.site'],
     method: ['GET','POST'],
     allowedHeaders: ['Content-type', 'Authorization'],
     credentials:true
