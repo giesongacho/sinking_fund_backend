@@ -17,7 +17,7 @@ const LoginController = {
                     const {password:_, ...data} = user.dataValues
                     res.cookie('authTokens', token, {
                         httpOnly: true,
-                        secure:true,
+                        secure:false,
                         sameSite:'none',
                         maxAge:3600000 
                     })
